@@ -19,6 +19,7 @@
         </activity>
 
         <activity android:name=".activity.ActivityOne"/>
+        <activity android:name=".activity.ActivityTwo"/>
     </application>
 
 </manifest>

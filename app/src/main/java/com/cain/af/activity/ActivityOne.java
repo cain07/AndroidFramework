@@ -11,10 +11,15 @@ import com.cain.af.api.ApiService;
 import com.cain.af.domain.MainVo;
 import com.cain.af.model.MailModel;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,10 +44,12 @@ public class ActivityOne extends Activity implements View.OnClickListener {
 
         Button button1 = (Button) findViewById(R.id.button1);
         Button button2 = (Button) findViewById(R.id.button2);
-        Button button3 = (Button) findViewById(R.id.button2);
+        Button button3 = (Button) findViewById(R.id.button3);
+        Button button4 = (Button) findViewById(R.id.button4);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
     }
 
 
@@ -73,6 +80,7 @@ public class ActivityOne extends Activity implements View.OnClickListener {
 
                     @Override
                     public void onFailure(Call<MainVo> call, Throwable t) {
+
 
                     }
                 });
@@ -107,9 +115,32 @@ public class ActivityOne extends Activity implements View.OnClickListener {
 
                 break;
             case R.id.button3:
+                Observable<MainVo> ems = MailModel.getInstance().getkuaiDiObSe("ems", "9745531155532");
 
-                //subscriptions.add(MailModel.getInstance().getkuaiDiObSe("ems","9745531155532")
+                ems.subscribe(new Observer<MainVo>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(MainVo value) {
+                        Log.e("onNext","----"+value.toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("onNext","----"+e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+                break;
+            case R.id.button4:
 
                 break;
 

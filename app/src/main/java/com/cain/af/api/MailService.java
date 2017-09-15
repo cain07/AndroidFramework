@@ -5,6 +5,7 @@ import com.cain.af.api.param.MailParam;
 import com.cain.af.domain.GetIpInfoResponseVo;
 import com.cain.af.domain.MainVo;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -31,6 +32,9 @@ public interface MailService {
 
     @GET("query")
     Observable<MainVo> getkuaiDiObSe(@Query("type") String ems, @Query("postid") String postid);
+
+    @GET("query")
+    Flowable<MainVo> getkuaiDiObS(@Query("type") String ems, @Query("postid") String postid);
 
 
     @POST("query")

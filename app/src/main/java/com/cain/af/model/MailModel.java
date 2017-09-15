@@ -4,6 +4,7 @@ import com.cain.af.api.MailService;
 import com.cain.af.api.utils.ServiceGenerator;
 import com.cain.af.domain.MainVo;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -40,6 +41,12 @@ public class MailModel {
      * @param
      * @return
      */
+
+    public Flowable<MainVo> getkuaiDiObS(String ems,String postid){
+
+        return service.getkuaiDiObS(ems,postid).subscribeOn(Schedulers.io());
+
+    }
     public Observable<MainVo> getkuaiDiObSe( String ems,String postid) {
         Observable<MainVo> observable = null;
         if (DEMO_FLAG) {

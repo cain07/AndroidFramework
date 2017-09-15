@@ -43,7 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("111","button1");
                 break;
             case R.id.button2:
-
+                intent = new Intent();
+                intent.setClass(MainActivity.this,ActivityTwo.class);
+                startActivity(intent);
+                Log.e("111","button1");
                 break;
             case R.id.button3:
                 break;
